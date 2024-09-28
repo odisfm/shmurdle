@@ -1,4 +1,4 @@
-import {wordlist, fakeWordlist, displayController} from "./main";
+import {wordlist, fakeWordlist} from "./main";
 import {account} from "./main";
 
 export default class GameController {
