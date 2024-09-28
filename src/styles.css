@@ -80,7 +80,9 @@ header {
 
         li {
             padding: .5rem;
-            display: flex;
+            display: grid;
+            grid-template-areas: "label control";
+            grid-template-columns: 3fr 1fr;
             align-items: center;
 
             &:not(:last-child) {
@@ -90,6 +92,7 @@ header {
             input[type="checkbox"] {
                 margin-left: auto;
                 background-color: #000;
+                grid-area: control;
             }
 
 
@@ -99,6 +102,7 @@ header {
                 padding: .5rem 1rem;
                 font-size: 1rem;
                 border-radius: 4px;
+                grid-area: 1 / 1 / 2 / 3;
 
                 &#clear-user-data {
                     background-color: #610a0a;
