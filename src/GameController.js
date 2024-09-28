@@ -1,4 +1,4 @@
-import {wordlist, displayController} from "./main";
+import {wordlist, fakeWordlist, displayController} from "./main";
 import {account} from "./main";
 
 export default class GameController {
@@ -118,6 +118,18 @@ export default class GameController {
     }
 
     isInWordList(word) {
-        return wordlist.includes(word)
+        if (!wordlist.includes(word)){
+            if (account.user.accurateList){
+                return false
+            }else{
+                if (fakeWordlist.includes(word)){
+                    return true
+                }else{
+                    return false
+                }
+            }
+        }else{
+            return true
+        }
     }
 }

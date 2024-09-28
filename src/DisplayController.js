@@ -63,6 +63,19 @@ export default class DisplayController {
         if (account.user.animations) {
             animationsToggle.checked = true
         }
+        let accurateListToggle = document.querySelector('#accurate-list-checkbox')
+        accurateListToggle.addEventListener('change', () => {
+            account.setAccurateWordlist(accurateListToggle.checked)
+            document.querySelector('#overflow-menu').classList.add('hidden')
+            if (accurateListToggle.checked === false){
+                this.printError('Schmurdle will let you guess real words that will never be the correct word')
+            }else{
+                this.printError('Schmurdle will not allow real words that will never be the correct word')
+            }
+        })
+        if (account.user.accurateList) {
+            accurateListToggle.checked = true
+        }
         const clearUserData = document.querySelector('#clear-user-data')
         clearUserData.addEventListener('click', () => {
             if (window.confirm('Clear all user data and forfeit game?')){

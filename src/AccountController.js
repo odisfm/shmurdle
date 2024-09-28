@@ -12,6 +12,7 @@ export default class AccountController {
             let lastPlayed = new Date()
             let hardMode = true
             let animations = true
+            let accurateList = false
             this.assignNextWord(true)
             this.user = {
                 id: id,
@@ -19,7 +20,8 @@ export default class AccountController {
                 playedCount: playedCount,
                 lastPlayed: lastPlayed,
                 hardMode: hardMode,
-                animations: animations
+                animations: animations,
+                accurateList: accurateList
             }
         }else {
             this.user = JSON.parse(this.user)
@@ -82,6 +84,11 @@ export default class AccountController {
 
     setAnimations(value){
         this.user.animations = value
+        this.updateStoredUser()
+    }
+
+    setAccurateWordlist(value){
+        this.user.accurateList = value
         this.updateStoredUser()
     }
 
