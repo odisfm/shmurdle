@@ -327,13 +327,6 @@ header {
     }
 }
 
-@media screen and (max-width: 550px) {
-    #hard-mode-container {
-        display: none !important;
-    }
-
-}
-
 #explosion-container {
     position: absolute;
     z-index: 0;
