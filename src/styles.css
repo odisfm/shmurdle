@@ -424,7 +424,6 @@ header {
         color: #ffffff00;
         opacity: 1;
         font-size: 3.5rem;
-        height: inherit;
     }
     100% {
         transform: rotateX(0deg);
