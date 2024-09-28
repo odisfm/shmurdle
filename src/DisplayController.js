@@ -53,11 +53,11 @@ export default class DisplayController {
         }
         let animationsToggle = document.querySelector('#animations-checkbox')
         animationsToggle.addEventListener('change', () => {
-            account.setAnimations(animationsToggle.checked)
+            account.setAnimations(!animationsToggle.checked)
             document.querySelector('#overflow-menu').classList.add('hidden')
         })
         if (account.user.animations) {
-            animationsToggle.checked = true
+            animationsToggle.checked = false
         }
         let accurateListToggle = document.querySelector('#accurate-list-checkbox')
         accurateListToggle.addEventListener('change', () => {
