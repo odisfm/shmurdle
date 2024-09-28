@@ -1,5 +1,6 @@
 import resetcss from './reset.css'
 import stylesheet from './styles.css'
+import animations from './animations.css'
 import wordlistRaw from './words.json'
 import wordlistFake from './allowed-words.json'
 import GameController from './GameController'

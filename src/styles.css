@@ -327,18 +327,6 @@ header {
     }
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-
-
 @media screen and (max-width: 550px) {
     #hard-mode-container {
         display: none !important;
@@ -359,92 +347,6 @@ header {
     background: linear-gradient(90deg, #6BAA64, #568a52, #80af7e);
     background-size: 300% 300%;
     animation: gradient-animation 4s ease infinite;
-
-}
-
-@keyframes gradient-animation {
-    0% {
-        background-position: 0% 50%;
-        opacity: 0;
-    }
-    50% {
-        background-position: 100% 50%;
-        opacity: 1;
-    }
-    100% {
-        background-position: 0% 50%;
-        opacity: 0;
-    }
-}
-
-@keyframes flip {
-    0% {
-        transform: rotateX(0deg);
-        color: #ffffffff;
-        opacity: 0;
-    }
-    10% {
-        color: #ffffff00;
-    }
-    35% {
-        color: #ffffff00;
-    }
-    50% {
-        transform: rotateX(180deg);
-        opacity: .2;
-
-
-    }
-    70% {
-        color: #ffffff00;
-        opacity: 1;
-        font-size: 3.5rem;
-    }
-    100% {
-        transform: rotateX(0deg);
-        color: #ffffffff;
-        font-size: 2rem;
-
-    }
-}
-
-@keyframes wiggle {
-    0% {
-        transform: translateX(0); /* Start position */
-    }
-    25% {
-        transform: translateX(-6px); /* Move left */
-    }
-    50% {
-        transform: translateX(6px); /* Move right */
-    }
-    100% {
-        transform: translateX(0); /* Return to start */
-    }
-}
-
-@keyframes animateWinningLetters {
-    20% {
-        background-color: #000;
-    }
-    70% {
-        background-color: #000;
-    }
-    100% {
-        background-color: var(--correct-green);
-    }
-}
-
-@keyframes active-animation {
-    0% {
-        background-color: initial;
-    }
-    50% {
-        background-color: white;
-    }
-    100% {
-        background-color: initial;
-    }
 }
 
 body.game-over {
