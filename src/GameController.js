@@ -14,8 +14,6 @@ export default class GameController {
     setWord(newWord) {
         this.word = newWord
         //this.word = 'alive'
-        console.log(`the word is ${this.word}`)
-        console.log([...this.word])
         this.gameOver = false;
 
     }
@@ -27,7 +25,6 @@ export default class GameController {
             this.hardMode = true
         }
         account.addPlayCount()
-        console.log(`started new game, hard mode: ${this.hardMode}`)
     }
 
     resetGame() {
@@ -37,9 +34,7 @@ export default class GameController {
     }
 
     evaluateGuess(guess) {
-        console.log(`You guessed "${guess}"`)
         if (guess.length !== this.word.length) {
-            console.log('Invalid guess length!')
             return;
         }
         let guessArray = [...guess]
@@ -86,14 +81,11 @@ export default class GameController {
         }
 
         if (this.hardMode === true)
-            console.log(`checking against hard mode, hard mode: ${this.hardMode}`)
-            console.log(this.lastGuess)
             for (let i = 0; i < guessArray.length; i++){
                 if (correctArray[i] === true){
                     continue
                 }
                 if (this.lastGuess[i] === true && this.hardMode === true){
-                    console.log('invalid attempt')
                     return 'invalid'
                 }
         }

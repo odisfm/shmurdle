@@ -27,11 +27,8 @@ export default class AccountController {
             this.user = JSON.parse(this.user)
             this.user.lastPlayed = parseDate(this.user.lastPlayed)
             this.assignNextWord()
-
         }
         this.updateStoredUser()
-
-        console.log(this.user)
     }
 
     updateStoredUser() {
@@ -57,7 +54,6 @@ export default class AccountController {
                 dateToFormat = this.user.lastPlayed
             }
             let dateString = formatDate(dateToFormat, 'EEEE d MMMM yyyy')
-            console.log(dateString)
             let hash = this.stringToNumber(dateString)
             hash = wordlist.length % hash
             this.nextWord = wordlist[hash]
@@ -65,7 +61,6 @@ export default class AccountController {
             let random = Math.floor(Math.random() * (wordlist.length - 1));
             this.nextWord = wordlist[random]
         }
-        console.log(`the new word is ${this.nextWord}`)
     }
 
     stringToNumber(string) {

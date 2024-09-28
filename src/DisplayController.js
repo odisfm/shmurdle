@@ -1,11 +1,6 @@
 import {gameController} from "./main";
 import {account} from "./main";
 
-const ALPHABET = [
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-];
-
 export default class DisplayController {
     constructor() {
         this.gameDiv = document.querySelector('#game')
@@ -49,7 +44,6 @@ export default class DisplayController {
         })
         let hardModeToggle = document.querySelector('#hard-mode-checkbox')
         hardModeToggle.addEventListener('change', () => {
-            console.log(hardModeToggle.checked)
             account.setHardMode(hardModeToggle.checked)
             document.querySelector('#overflow-menu').classList.add('hidden')
             this.printError('Setting will apply from your next game')
@@ -233,7 +227,6 @@ export default class DisplayController {
     }
 
     updateKeyboardHints(guessResult) {
-        console.log(guessResult)
         let keyboardButtons = document.querySelectorAll('.keyboard-key')
         function updateLetter(letter, result){
             letter = letter.toUpperCase()
