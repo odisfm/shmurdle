@@ -51,6 +51,7 @@ export default class DisplayController {
         hardModeToggle.addEventListener('change', () => {
             console.log(hardModeToggle.checked)
             account.setHardMode(hardModeToggle.checked)
+            document.querySelector('#overflow-menu').classList.add('hidden')
             this.printError('Setting will apply from your next game')
         })
         if (account.user.hardMode) {
@@ -59,6 +60,7 @@ export default class DisplayController {
         let animationsToggle = document.querySelector('#animations-checkbox')
         animationsToggle.addEventListener('change', () => {
             account.setAnimations(animationsToggle.checked)
+            document.querySelector('#overflow-menu').classList.add('hidden')
         })
         if (account.user.animations) {
             animationsToggle.checked = true
