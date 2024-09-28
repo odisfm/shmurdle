@@ -11,6 +11,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
+      allowedHosts: 'all',
     hot: false,
     liveReload: true,
     open:
@@ -55,7 +56,11 @@ module.exports = {
         {
           test: /\.svg$/,
           loader: 'svg-inline-loader'
-      }
+      },
+        {
+            test: /\.txt$/i,
+            use: 'raw-loader',
+        }
     ],
   },
 };

@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>schmurdle</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #111111;}
+    </style>
 </head>
 <body>
     <header>
@@ -14,24 +17,85 @@
             <div id="logo">schmurdle</div>
         </div>
         <div id="header-menu">
-            <ul>
-                <li id="hard-mode-container">
-                    <span>hard mode</span>
-                    <button id="hard-mode-toggle"></button>
-                </li>
-                <li id="overflow-menu">...</li>
-            </ul>
+                <button id="overflow-button" style="background: none; border: none"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>dots-vertical</title><path d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z" /></svg>
+                </button>
         </div>
     </header>
-    <div id="content">
-        <div id="game">
-            <div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div>
-            <div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div>
-            <div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div>
-            <div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div>
-            <div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div>
-            <div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div><div class="letter-box"></div>
-        </div>
+    <div id="overflow-menu" class="hidden">
+        <ul>
+            <li><span>Hard mode</span><input type="checkbox" name="" id="hard-mode-checkbox"></li>
+            <li><span>Animations</span><input type="checkbox" name="" id="animations-checkbox"></li>
+            <li><button id="forfeit-game">Forfeit</button></li>
+            <li><button id="clear-user-data">Clear data</button></li>
+        </ul>
     </div>
+    <div id="explosion-container"></div>
+    <div id="content">
+
+        <div id="game">
+
+        </div>
+
+        <div id="virtual-keyboard">
+            <div class="keyboard-row">
+                <button class="keyboard-key">Q</button>
+                <button class="keyboard-key">W</button>
+                <button class="keyboard-key">E</button>
+                <button class="keyboard-key">R</button>
+                <button class="keyboard-key">T</button>
+                <button class="keyboard-key">Y</button>
+                <button class="keyboard-key">U</button>
+                <button class="keyboard-key">I</button>
+                <button class="keyboard-key">O</button>
+                <button class="keyboard-key">P</button>
+            </div>
+            <div class="keyboard-row">
+                <button class="keyboard-key">A</button>
+                <button class="keyboard-key">S</button>
+                <button class="keyboard-key">D</button>
+                <button class="keyboard-key">F</button>
+                <button class="keyboard-key">G</button>
+                <button class="keyboard-key">H</button>
+                <button class="keyboard-key">J</button>
+                <button class="keyboard-key">K</button>
+                <button class="keyboard-key">L</button>
+            </div>
+            <div class="keyboard-row">
+                <button class="keyboard-key special enter">
+                    <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check-circle</title><path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" /></svg>
+                </button>
+                <button class="keyboard-key">Z</button>
+                <button class="keyboard-key">X</button>
+                <button class="keyboard-key">C</button>
+                <button class="keyboard-key">V</button>
+                <button class="keyboard-key">B</button>
+                <button class="keyboard-key">N</button>
+                <button class="keyboard-key">M</button>
+                <button class="keyboard-key special delete">
+                    <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>backspace</title><path d="M22,3H7C6.31,3 5.77,3.35 5.41,3.88L0,12L5.41,20.11C5.77,20.64 6.31,21 7,21H22A2,2 0 0,0 24,19V5A2,2 0 0,0 22,3M19,15.59L17.59,17L14,13.41L10.41,17L9,15.59L12.59,12L9,8.41L10.41,7L14,10.59L17.59,7L19,8.41L15.41,12" /></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="game-over">
+            <span class="game-over-text">the word was</span>
+            <div id="winning-word">
+                <span class="winning-letter">A</span>
+                <span class="winning-letter">L</span>
+                <span class="winning-letter">I</span>
+                <span class="winning-letter">V</span>
+                <span class="winning-letter">E</span>
+            </div>
+            <button id="play-again">Play again?</button>
+        </div>
+
+
+        <!--        <form action="" id="testing-form">-->
+<!--            <input type="text" id="testing-input">-->
+<!--            <button id="test-submit">submit</button>-->
+<!--        </form>-->
+
+    </div>
+    <div id="error-message">sfdsfsdfsf</div>
 </body>
 </html>
