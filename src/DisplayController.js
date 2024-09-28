@@ -303,12 +303,23 @@ export default class DisplayController {
         }, 4000)
     }
 
-    gameOver() {
-        document.querySelector('body').classList.add('game-over')
+    gameOver(winningGame = false) {
+
+        if (winningGame && account.user.animations) {
+                this.playVictoryAnimation()
+        }
+
         const gameOverModal = document.querySelector('#game-over')
         const gameOverLetters = gameOverModal.querySelectorAll('.winning-letter')
         for (let i = 0; i < gameController.word.length; i++) {
             gameOverLetters[i].textContent = gameController.word[i].toUpperCase()
+        }
+        if (winningGame && account.user.animations){
+            setTimeout(() => {
+                document.querySelector('body').classList.add('game-over');
+            }, 4000)
+        }else {
+            document.querySelector('body').classList.add('game-over');
         }
     }
 }
