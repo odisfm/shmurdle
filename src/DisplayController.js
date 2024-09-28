@@ -187,12 +187,7 @@ export default class DisplayController {
             })
         }
         if (guessResult.winningRound) {
-            document.querySelector('body').classList.add('game-over')
-            if (account.user.animations) {
-                setTimeout(() => {
-                    this.playVictoryAnimation()
-                }, 1000)
-            }
+
         }
         if (account.user.animations) {
             setTimeout(() => {
@@ -223,10 +218,10 @@ export default class DisplayController {
             this.selectNextRow()
         }
 
-        if (guessResult.losingRound || guessResult.winningRound){
-            // this.printError(`The word was ${guessResult.word.toUpperCase()}...`)
+        if (guessResult.losingRound){
             this.gameOver()
-
+        }else if (guessResult.winningRound){
+            this.gameOver(true)
         }
 
     }
