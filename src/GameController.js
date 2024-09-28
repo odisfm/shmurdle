@@ -8,14 +8,12 @@ export default class GameController {
         if (account.user.hardMode === true){
             this.hardMode = true
         }
-
     }
 
     setWord(newWord) {
         this.word = newWord
         //this.word = 'alive' // debug
         this.gameOver = false;
-
     }
 
     newGame() {
@@ -63,6 +61,7 @@ export default class GameController {
                 }
             }
         }
+
         if (correctCount === 5){
             this.gameOver = true
         }
