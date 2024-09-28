@@ -13,7 +13,7 @@ export default class GameController {
 
     setWord(newWord) {
         this.word = newWord
-        //this.word = 'alive'
+        //this.word = 'alive' // debug
         this.gameOver = false;
 
     }
