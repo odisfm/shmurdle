@@ -298,8 +298,8 @@ header {
 
         .winning-letter {
             background-color: var(--correct-green);
-            width: 8vw;
-            height: 8vw;
+            width: 7vw;
+            height: 7vw;
             display: flex;
             justify-content: center;
             align-items: center;
