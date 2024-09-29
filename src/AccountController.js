@@ -1,7 +1,6 @@
 import { v4 as uuid} from 'uuid'
 import { parseJSON as parseDate, isToday, format as formatDate } from 'date-fns';
 import {wordlist} from "./main";
-import {gameController} from "./main";
 
 export default class AccountController {
     constructor() {
@@ -155,7 +154,6 @@ export default class AccountController {
     }
 
     registerDefeat(){
-        gameController.gameOver = true
         if (this.user.gameInProgress){
             this.user.winStreak = 0
         }
