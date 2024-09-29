@@ -26,12 +26,67 @@
             <li><span>Hard mode</span><input type="checkbox" name="" id="hard-mode-checkbox"></li>
             <li><span>Reduce animations</span><input type="checkbox" name="" id="animations-checkbox"></li>
             <li><span>Accurate word list</span><input type="checkbox" name="" id="accurate-list-checkbox"></li>
+            <li><button id="open-stats">Stats</button></li>
             <li><button id="forfeit-game">Forfeit</button></li>
             <li><button id="clear-user-data">Clear data</button></li>
         </ul>
     </div>
     <div id="explosion-container"></div>
     <div id="content">
+        <div id="stats-display" data-bs-backdrop='static' class="hidden">
+            <div class="header">
+                <h1>Stats</h1>
+                <button id="stats-close-button">x</button>
+            </div>
+            <div class="content">
+                <div class="text-stats-container">
+                    <div class="label-container">
+                        <span>Games played</span>
+                        <span>Games won</span>
+                        <span>Win percentage</span>
+                        <span class="current-streak">Current streak</span>
+                    </div>
+                    <div class="results-container">
+                        <span id="games-played-count">420</span>
+                        <span id="games-won-count">69</span>
+                        <span id="win-percentage">16%</span>
+                        <span id="win-streak">32</span>
+                    </div>
+                </div>
+                <h1 class="distribution-label">Guess distribution</h1>
+                <div id="distribution-chart">
+                    <div class="bar-container">
+                        <div class="bar" style="height: 40%"></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar" style="height: 10%"></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar" style="height: 20%"></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar" style="height: 30%"></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar"></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar"></div>
+                    </div>
+                    <div class="bar-container">
+                        <div class="bar" style="height: 20%"></div>
+                    </div>
+                    <div class="guess-key">1</div>
+                    <div class="guess-key">2</div>
+                    <div class="guess-key">3</div>
+                    <div class="guess-key">4</div>
+                    <div class="guess-key">5</div>
+                    <div class="guess-key">6</div>
+                    <div class="guess-key">:(</div>
+                </div>
+            </div>
+
+        </div>
 
         <div id="game">
 

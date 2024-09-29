@@ -89,6 +89,7 @@ export default class GameController {
                 }
         }
 
+        account.setGameInProgress(true)
         this.guessCount++;
         this.lastGuess = correctArray
 
@@ -97,11 +98,12 @@ export default class GameController {
         let word = this.word;
         if (this.gameOver) {
             winningRound = true
-            account.addWinCount()
+            account.addWinCount(this.guessCount)
         }else{
             if (this.guessCount === 6){
                 this.gameOver = true
                 losingRound = true
+                account.registerDefeat()
             }
         }
 

@@ -101,6 +101,15 @@ header {
                 border-radius: 4px;
                 grid-area: 1 / 1 / 2 / 3;
 
+                &#open-stats {
+                    background-color: var(--correct-green);
+                    &:hover {
+                        background-color: #ddd;
+                        color: #000;
+                        cursor: pointer;
+                    }
+                }
+
                 &#clear-user-data {
                     background-color: #610a0a;
                     &:hover {
@@ -298,6 +307,16 @@ header {
             background-color: #fff;
             color: #000;
         }
+
+        &#open-stats-2 {
+            background-color: #0b0b0b;
+            &:hover {
+                background-color: #fff;
+                color: #000;
+            }
+        }
+
+
     }
 
     .fade-in {
@@ -353,5 +372,144 @@ body:not(.game-over) {
     #game-over {
         display: none;
         pointer-events: none;
+    }
+}
+
+#stats-display {
+    &.hidden {
+        display: none;
+        pointer-events: none;
+    }
+    position: absolute;
+    z-index: 5;
+    top: 20%;
+    width: clamp(250px, 80vw, 500px);
+    height: clamp(400px, 70vh, 1000px);
+    background-color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .content {
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        height: 100%;
+    }
+
+    .header {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "left center right";
+        align-items: center;
+        padding: 1rem 1rem 1rem;
+        align-self: stretch;
+        background-color: #222;
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            grid-area: center;
+            justify-self: center;
+        }
+
+        #stats-close-button {
+            border: none;
+            background-color: #111;
+            padding: .5rem 1rem;
+            cursor: pointer;
+            grid-area: right;
+            color: #ddd;
+            font-size: 1.5rem;
+            margin-left: 2rem;
+            justify-self: end;
+            align-self: start;
+            border-radius: 50%;
+        }
+
+
+    }
+
+    .text-stats-container {
+        display: grid;
+        grid-template-columns: 5fr 4fr;
+        gap: 1rem;
+
+        .label-container, .results-container {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+
+            span {
+                display: block;
+            }
+
+            :last-child {
+                font-size: 1.3rem;
+            }
+        }
+
+        .label-container {
+            text-align: right;
+
+            .current-streak {
+                color: var(--correct-green);
+                font-weight: 600;
+            }
+        }
+
+        .results-container {
+            text-align: left;
+            font-weight: 600;
+        }
+    }
+
+    .distribution-label {
+        font-weight: 600;
+        margin-top: 2rem;
+        align-self: center;
+    }
+
+    #distribution-chart {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: 1fr 50px;
+        background-color: #444;
+        align-self: stretch;
+        margin-top: 1rem;
+        height: 100%;
+
+        .bar-container {
+            display: flex;
+            flex-direction: column;
+
+            &:not(:nth-child(7)) {
+                border-right: 1px solid #555;
+            }
+
+            .bar {
+                background-color: var(--correct-green);
+                margin-top: auto;
+            }
+
+            &:nth-child(7){
+                .bar {
+                    background-color: var(--appears-yellow);
+                }
+            }
+        }
+
+        .guess-key {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+
+            &:not(:last-child) {
+                border-right: 2px solid #222;
+            }
+        }
     }
 }

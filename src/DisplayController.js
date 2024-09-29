@@ -82,8 +82,15 @@ export default class DisplayController {
         forfeitGame.addEventListener('click', () => {
             if (window.confirm('Forfeit the current game?')){
                 this.gameOver()
+                account.registerDefeat('forfeit')
                 document.querySelector('#overflow-menu').classList.add('hidden')
             }
+        })
+        document.querySelector('#open-stats').addEventListener('click', () => this.openStats())
+        document.querySelector('#open-stats-2').addEventListener('click', () => this.openStats())
+        const closeStatsButton = document.querySelector('#stats-close-button')
+        closeStatsButton.addEventListener('click', () => {
+            document.querySelector('#stats-display').classList.add('hidden')
         })
 
 
@@ -137,6 +144,12 @@ export default class DisplayController {
             this.currentAttempt += keyValue
             let letterIndex = this.currentAttempt.length - 1
             this.currentRow[letterIndex].textContent = keyValue
+        }else if (keyValue === 'Escape') {
+            if (!document.querySelector('#overflow-menu').classList.contains('hidden')){
+                document.querySelector('#overflow-menu').classList.add('hidden')
+            }else if (!document.querySelector('#stats-display').classList.contains('hidden')) {
+                document.querySelector('#stats-display').classList.add('hidden')
+            }
         }else{
             return;
         }
@@ -309,5 +322,34 @@ export default class DisplayController {
         }else {
             document.querySelector('body').classList.add('game-over');
         }
+    }
+
+    updateStatDisplay(){
+        let statObject = account.reportStats()
+        const resultsContainer = document.querySelector('.results-container')
+        const playedCountSpan = document.querySelector('#games-played-count')
+        const winCountSpan = document.querySelector('#games-won-count')
+        const winPercentageSpan = document.querySelector('#win-percentage')
+        const winStreakSpan = document.querySelector('#win-streak')
+
+        const barElements = document.querySelectorAll('.bar')
+
+        playedCountSpan.textContent = statObject.playedCount
+        winCountSpan.textContent = statObject.winCount
+        winPercentageSpan.textContent = statObject.winPercentage + '%'
+        winStreakSpan.textContent = statObject.winStreak
+
+        for (let i = 0; i < statObject.guessPercents.length; i++){
+            let guess = statObject.guessPercents[i]
+            let bar = barElements[i]
+            bar.setAttribute('style', `height: ${guess}%`)
+        }
+        barElements[6].setAttribute('style', `height: ${statObject.defeatPercentage}%`)
+    }
+
+    openStats(){
+        this.updateStatDisplay()
+        document.querySelector('#stats-display').classList.remove('hidden')
+        document.querySelector('#overflow-menu').classList.add('hidden')
     }
 }

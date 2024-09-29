@@ -1,6 +1,7 @@
 import { v4 as uuid} from 'uuid'
 import { parseJSON as parseDate, isToday, format as formatDate } from 'date-fns';
 import {wordlist} from "./main";
+import {gameController} from "./main";
 
 export default class AccountController {
     constructor() {
@@ -12,9 +13,12 @@ export default class AccountController {
             let lastPlayed = new Date()
             let hardMode = true
             let animations = true
-            let accurateList = false
             let accurateList = true
+            let winDistribution = [0, 0, 0, 0, 0, 0]
+            let winStreak = 0
+            let gameInProgress = false
             this.assignNextWord(true)
+
             this.user = {
                 id: id,
                 winCount: winCount,
@@ -22,12 +26,19 @@ export default class AccountController {
                 lastPlayed: lastPlayed,
                 hardMode: hardMode,
                 animations: animations,
-                accurateList: accurateList
+                accurateList: accurateList,
+                winDistribution: winDistribution,
+                winStreak: winStreak,
+                gameInProgress: gameInProgress
             }
         }else {
             this.user = JSON.parse(this.user)
             this.user.lastPlayed = parseDate(this.user.lastPlayed)
             this.assignNextWord()
+            if (this.user.gameInProgress === true){
+                this.registerDefeat()
+                this.setGameInProgress(false)
+            }
         }
         this.updateStoredUser()
     }
@@ -41,8 +52,12 @@ export default class AccountController {
         this.updateStoredUser()
     }
 
-    addWinCount() {
+    addWinCount(winning_guess) {
+        winning_guess--
+        this.user.winDistribution[winning_guess]++
         this.user.winCount++
+        this.user.winStreak++
+        this.setGameInProgress(false)
         this.updateStoredUser()
     }
 
@@ -91,5 +106,61 @@ export default class AccountController {
     clearUserData(){
         localStorage.clear()
         location.reload()
+    }
+
+    reportStats(){
+        let playedCount = this.user.playedCount
+        let winCount = this.user.winCount
+
+        if (this.user.gameInProgress){
+            playedCount--
+        }
+
+        let winPercentage = Math.round(winCount / playedCount * 100)
+
+        if (isNaN(winPercentage)){
+            winPercentage = 0
+        }
+
+        function roundGuessDistribution(guessCount){
+            return Math.round(guessCount / playedCount * 100)
+        }
+
+        let guessPercents = []
+        for (let i = 0; i < this.user.winDistribution.length; i++){
+            let percent = roundGuessDistribution(this.user.winDistribution[i])
+            if (isNaN(percent)){
+                percent = 0
+            }
+            guessPercents.push(percent)
+        }
+
+        let defeatCount = playedCount - winCount
+        let defeatPercentage = 100 - winPercentage
+
+
+        let winStreak = this.user.winStreak
+
+
+
+        return {playedCount, winCount, defeatCount, winPercentage, winStreak, guessPercents, defeatPercentage}
+    }
+
+    setGameInProgress(value){
+        if (value === true && this.user.gameInProgress === false){
+            this.addPlayCount()
+        }
+        this.user.gameInProgress = value
+        this.updateStoredUser()
+    }
+
+    registerDefeat(){
+        gameController.gameOver = true
+        if (this.user.gameInProgress){
+            this.user.winStreak = 0
+        }
+        this.setGameInProgress(false)
+
+
     }
 }
