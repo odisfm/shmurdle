@@ -188,8 +188,9 @@ export default class DisplayController {
         }
 
         let correctArray = guessResult.correctArray
+        let animatedDivs = [...this.currentRow]
         if (account.user.animations) {
-            this.currentRow.forEach((button) => {
+            animatedDivs.forEach((button) => {
                 button.classList.add('flip')
             })
         }
@@ -198,7 +199,7 @@ export default class DisplayController {
         }
         if (account.user.animations) {
             setTimeout(() => {
-                this.currentRow.forEach((button) => {
+                animatedDivs.forEach((button) => {
                     button.classList.remove('flip')
                 })
             }, 1000)
@@ -291,12 +292,21 @@ export default class DisplayController {
     playVictoryAnimation() {
         const explosionContainer = document.querySelector('#explosion-container')
         explosionContainer.classList.add('explosion')
+        let letterDivs = [...document.querySelectorAll('.letter-box')]
+        let firstCurrentIndex = letterDivs.indexOf(this.currentRow[0])
+        letterDivs.splice(firstCurrentIndex, 5)
         this.currentRow.forEach((button) => {
             button.classList.add('animate-winning')
+        })
+        letterDivs.forEach((button) => {
+            button.classList.add('animate-winning-others')
         })
         setTimeout(() => {
             this.currentRow.forEach((button) => {
                 button.classList.remove('animate-winning')
+            })
+            letterDivs.forEach((button) => {
+                button.classList.remove('animate-winning-others')
             })
         }, 4000)
         setTimeout(() => {

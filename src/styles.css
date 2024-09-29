@@ -191,6 +191,10 @@ header {
             &.animate-winning {
                 animation: animateWinningLetters 4s;
             }
+
+            &.animate-winning-others {
+                animation: animateWinningOthers 8s;
+            }
         }
     }
 
