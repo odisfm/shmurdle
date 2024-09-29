@@ -1,6 +1,8 @@
 # User
 dist
 dev
+.idea
+*.psd
 
 # Logs
 logs
