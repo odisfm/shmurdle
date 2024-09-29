@@ -28,7 +28,8 @@ module.exports = {
         template: './src/index.html',
         title: 'Development',
         filename: 'index.html',
-        inject: 'body'
+        inject: 'body',
+        favicon: "./src/favicon.png"
     })
   ],
   module: {
