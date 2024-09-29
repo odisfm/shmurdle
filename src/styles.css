@@ -81,6 +81,7 @@ header {
             grid-template-areas: "label control";
             grid-template-columns: 3fr 1fr;
             align-items: center;
+            color: #ddd;
 
             &:not(:last-child) {
                 border-bottom: 1px solid #444;
