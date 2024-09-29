@@ -22,7 +22,6 @@ export default class GameController {
         if (account.user.hardMode === true){
             this.hardMode = true
         }
-        account.addPlayCount()
     }
 
     resetGame() {

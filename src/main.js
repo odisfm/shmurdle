@@ -19,7 +19,3 @@ export const gameController = new GameController(firstWord)
 export const displayController = new DisplayController()
 
 console.log('What on earth are you doing here?')
-
-
-
-
