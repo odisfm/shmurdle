@@ -13,6 +13,7 @@ export default class AccountController {
             let hardMode = true
             let animations = true
             let accurateList = false
+            let accurateList = true
             this.assignNextWord(true)
             this.user = {
                 id: id,
