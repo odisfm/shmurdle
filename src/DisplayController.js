@@ -136,7 +136,7 @@ export default class DisplayController {
                 this.currentRow[this.currentAttempt.length].textContent = null
 
             }
-        }else if (/^[a-zA-Z]$/.test(keyValue)){
+        }else if (/^[a-zA-Z]$/.test(keyValue)) {
             if (this.currentAttempt.length >= this.lettersInWord) {
                 return;
             }
