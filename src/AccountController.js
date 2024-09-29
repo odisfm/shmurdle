@@ -36,7 +36,6 @@ export default class AccountController {
             this.assignNextWord()
             if (this.user.gameInProgress === true){
                 this.registerDefeat()
-                this.setGameInProgress(false)
             }
         }
         this.updateStoredUser()
@@ -158,7 +157,5 @@ export default class AccountController {
             this.user.winStreak = 0
         }
         this.setGameInProgress(false)
-
-
     }
 }
