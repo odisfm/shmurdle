@@ -134,8 +134,13 @@ export default class AccountController {
         }
 
         let defeatCount = playedCount - winCount
-        let defeatPercentage = 100 - winPercentage
 
+        let defeatPercentage
+        if (playedCount >= 1) {
+            defeatPercentage = 100 - winPercentage
+        }else{
+            defeatPercentage = 0
+        }
 
         let winStreak = this.user.winStreak
 
