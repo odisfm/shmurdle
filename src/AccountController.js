@@ -1,5 +1,5 @@
 import { v4 as uuid} from 'uuid'
-import { parseJSON as parseDate, isToday, format as formatDate } from 'date-fns';
+import { isToday, format as formatDate } from 'date-fns';
 import {wordlist} from "./main";
 
 export default class AccountController {
@@ -32,7 +32,7 @@ export default class AccountController {
             }
         }else {
             this.user = JSON.parse(this.user)
-            this.user.lastPlayed = parseDate(this.user.lastPlayed)
+            this.user.lastPlayed = new Date(this.user.lastPlayed)
             this.assignNextWord()
             if (this.user.gameInProgress === true){
                 this.registerDefeat()
@@ -47,6 +47,7 @@ export default class AccountController {
 
     addPlayCount() {
         this.user.playedCount++
+        this.user.lastPlayed = new Date()
         this.updateStoredUser()
     }
 
