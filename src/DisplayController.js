@@ -330,15 +330,28 @@ export default class DisplayController {
         if (winningGame) {
             gameOverModal.classList.add('win')
             document.querySelector('#game-over-streak').textContent = account.user.winStreak
+            if (account.user.animations){
+                setTimeout(() => {
+                    document.querySelector('body').classList.add('game-over');
+                    gameOverModal.classList.add('fade-in')
+                    setTimeout(() => {
+                        gameOverModal.classList.remove('fade-in')
+                    }, 1000)
+                }, 4000)
+            }else{
+                document.querySelector('body').classList.add('game-over');
+            }
         }else{
             gameOverModal.classList.add('lose')
-        }
-        if (winningGame && account.user.animations){
-            setTimeout(() => {
+            if (account.user.animations){
                 document.querySelector('body').classList.add('game-over');
-            }, 4000)
-        }else {
-            document.querySelector('body').classList.add('game-over');
+                gameOverModal.classList.add('fade-in')
+                setTimeout(() => {
+                    gameOverModal.classList.remove('fade-in')
+                }, 1000)
+            }else{
+                document.querySelector('body').classList.add('game-over');
+            }
         }
     }
 
