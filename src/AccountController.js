@@ -144,8 +144,6 @@ export default class AccountController {
 
         let winStreak = this.user.winStreak
 
-
-
         return {playedCount, winCount, defeatCount, winPercentage, winStreak, guessPercents, defeatPercentage}
     }
 
