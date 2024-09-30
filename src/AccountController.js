@@ -69,7 +69,7 @@ export default class AccountController {
             }
             let dateString = formatDate(dateToFormat, 'EEEE d MMMM yyyy')
             let hash = this.stringToNumber(dateString)
-            hash = wordlist.length % hash
+            hash = hash % wordlist.length -1
             this.nextWord = wordlist[hash]
         }else{
             let random = Math.floor(Math.random() * (wordlist.length - 1));
