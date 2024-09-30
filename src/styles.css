@@ -185,7 +185,7 @@ header {
             }
 
             &.wiggle {
-                animation: wiggle .5s;
+                animation: wiggle .3s;
             }
 
             &.animate-winning {
