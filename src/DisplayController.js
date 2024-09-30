@@ -291,6 +291,9 @@ export default class DisplayController {
     }
 
     playVictoryAnimation() {
+        if (!account.user.animations){
+             return
+        }
         const explosionContainer = document.querySelector('#explosion-container')
         explosionContainer.classList.add('explosion')
         let letterDivs = [...document.querySelectorAll('.letter-box')]
