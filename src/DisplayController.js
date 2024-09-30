@@ -126,9 +126,7 @@ export default class DisplayController {
         let keyValue = e.key
 
         if (keyValue === 'Enter'){
-            if (this.currentAttempt.length === this.lettersInWord){
-                this.processAttempt()
-            }
+            this.processAttempt()
         }else if (keyValue === 'Backspace') {
             if (this.currentAttempt.length > 0) {
 
@@ -168,22 +166,25 @@ export default class DisplayController {
     }
 
     processAttempt() {
-        if (!gameController.isInWordList(this.currentAttempt)){
-            this.printError('Not in word list!')
-            return
-        }
         let guessResult = gameController.evaluateGuess(this.currentAttempt)
 
-        if (guessResult === 'invalid'){
-            this.printError('You must try letters you know are correct!\nDisable hard mode in the menu')
-            this.currentRow.forEach((button) => {
-                button.classList.add('wiggle')
-            })
-            setTimeout(() => {
+        if (guessResult === 'invalidHard' || guessResult === 'notInList' || guessResult === 'otherInvalid'){
+            if (guessResult === 'invalidHard') {
+                this.printError('You must try letters you know are correct!\nDisable hard mode in the menu')
+            }
+            else if (guessResult === 'notInList'){
+                this.printError('Not in word list!')
+            }
+            if (account.user.animations) {
                 this.currentRow.forEach((button) => {
-                    button.classList.remove('wiggle')
+                    button.classList.add('wiggle')
                 })
-            }, 1000)
+                setTimeout(() => {
+                    this.currentRow.forEach((button) => {
+                        button.classList.remove('wiggle')
+                    })
+                }, 1000)
+            }
             return;
         }
 

@@ -32,7 +32,10 @@ export default class GameController {
 
     evaluateGuess(guess) {
         if (guess.length !== this.word.length) {
-            return;
+            return 'otherInvalid';
+        }
+        if (!this.isInWordList(guess)){
+            return 'notInList'
         }
         let guessArray = [...guess]
         let correctArray = [false, false, false, false, false]
@@ -84,7 +87,7 @@ export default class GameController {
                     continue
                 }
                 if (this.lastGuess[i] === true && this.hardMode === true){
-                    return 'invalid'
+                    return 'invalidHard'
                 }
         }
 
