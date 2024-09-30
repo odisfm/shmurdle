@@ -357,7 +357,6 @@ export default class DisplayController {
 
     updateStatDisplay(){
         let statObject = account.reportStats()
-        const resultsContainer = document.querySelector('.results-container')
         const playedCountSpan = document.querySelector('#games-played-count')
         const winCountSpan = document.querySelector('#games-won-count')
         const winPercentageSpan = document.querySelector('#win-percentage')
