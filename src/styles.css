@@ -276,6 +276,10 @@ header {
     padding: 1rem;
     gap: 1rem;
 
+    &.fade-in {
+        animation: fadeIn 1s;
+    }
+
     span.game-over-text {
         font-size: 1rem;
     }
@@ -361,13 +365,6 @@ header {
                 color: #000;
             }
         }
-
-
-    }
-
-    .fade-in {
-        animation: fadeIn 1s;
-
     }
 }
 
