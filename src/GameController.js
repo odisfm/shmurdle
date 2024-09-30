@@ -12,6 +12,7 @@ export default class GameController {
 
     setWord(newWord) {
         this.word = newWord
+        //console.log(this.word)
         //this.word = 'alive' // debug
         this.gameOver = false;
     }
