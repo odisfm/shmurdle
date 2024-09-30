@@ -275,6 +275,7 @@ header {
     font-size: .8rem;
     padding: 1rem;
     gap: 1rem;
+    text-align: center;
 
     &.fade-in {
         animation: fadeIn 1s;
@@ -304,11 +305,11 @@ header {
             display: flex;
 
             h1 {
-                font-size: 2.5rem;
+                font-size: clamp(2rem, 4vw, 3rem);
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: clamp(1.5rem, 3vw, 2.5rem);;
             }
 
             #game-over-streak {
