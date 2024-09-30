@@ -9,7 +9,7 @@ export default class AccountController {
             let id = uuid()
             let winCount = 0
             let playedCount = 0
-            let lastPlayed = new Date()
+            let lastPlayed = null
             let hardMode = true
             let animations = true
             let accurateList = true
@@ -32,7 +32,9 @@ export default class AccountController {
             }
         }else {
             this.user = JSON.parse(this.user)
-            this.user.lastPlayed = new Date(this.user.lastPlayed)
+            if (!this.user.lastPlayed === null) {
+                this.user.lastPlayed = new Date(this.user.lastPlayed)
+            }
             this.assignNextWord()
             if (this.user.gameInProgress === true){
                 this.registerDefeat()
@@ -61,9 +63,9 @@ export default class AccountController {
     }
 
     assignNextWord(firstTimePlayer = false) {
-        if (firstTimePlayer || !isToday(this.user.lastPlayed)){
+        if (firstTimePlayer || !isToday(this.user.lastPlayed) || this.user.lastPlayed === null){
             let dateToFormat;
-            if (firstTimePlayer){
+            if (firstTimePlayer || this.user.lastPlayed === null){
                 dateToFormat = new Date()
             }else{
                 dateToFormat = this.user.lastPlayed
