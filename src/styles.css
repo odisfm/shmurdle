@@ -449,7 +449,7 @@ body:not(.game-over) {
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-areas: "left center right";
         align-items: center;
-        padding: 1rem 1rem 1rem;
+        padding: .5rem .5rem;
         align-self: stretch;
         background-color: #222;
 
@@ -462,7 +462,7 @@ body:not(.game-over) {
 
         #stats-close-button {
             border: none;
-            background-color: #111;
+            background: none;
             padding: .5rem 1rem;
             cursor: pointer;
             grid-area: right;
@@ -471,7 +471,14 @@ body:not(.game-over) {
             margin-left: 2rem;
             justify-self: end;
             align-self: start;
-            border-radius: 50%;
+
+            svg {
+                fill: #fff;
+                height: 2rem;
+                &:hover {
+                    fill: var(--appears-yellow);
+                }
+            }
         }
 
 
