@@ -333,6 +333,7 @@ export default class DisplayController {
         gameOverModal.classList.remove('win', 'lose')
         if (winningGame) {
             gameOverModal.classList.add('win')
+            document.querySelector('#victory-message').textContent = this.generateVictoryMessage()
             document.querySelector('#game-over-streak').textContent = account.user.winStreak
             if (account.user.animations){
                 setTimeout(() => {
@@ -386,4 +387,28 @@ export default class DisplayController {
         document.querySelector('#stats-display').classList.remove('hidden')
         document.querySelector('#overflow-menu').classList.add('hidden')
     }
+
+    generateVictoryMessage(){
+        let guessCount = gameController.guessCount
+        let messageCategory;
+        if (guessCount <= 1){
+            messageCategory = 0
+        }else if (guessCount === 2 || guessCount === 3){
+            messageCategory = 1
+        }else if (guessCount === 4 || guessCount === 5){
+            messageCategory = 2
+        }else{
+            messageCategory = 3
+        }
+        let messageSelection = victoryMessages[messageCategory]
+        let random = Math.floor(Math.random() * (messageSelection.length - 1));
+        return messageSelection[random]
+    }
 }
+
+const victoryMessages = [
+    ['How on earth...', 'Unbelievable...', 'What the heck?!'],
+    ['Amazing!', 'Great job!', 'Well done!'],
+    ['Nice one!', 'You did it!', 'Nice work!'],
+    ['That was close!', 'Phew!', 'Close call!']
+]
