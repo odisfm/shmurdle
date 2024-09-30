@@ -154,10 +154,15 @@ export default class DisplayController {
     }
 
     drawLetterDivs(totalLetters) {
-        for (let i = 0; i < totalLetters; i++) {
+        for (let i = 0, j = 0; i < totalLetters; j++, i++) {
             let letterDiv = document.createElement('div')
             letterDiv.classList.add('letter-box', 'unchecked')
+            // let animationDelay = 100 * j
+            // letterDiv.setAttribute('style', `animation-delay: ${animationDelay}ms`)
             this.gameDiv.append(letterDiv)
+            // if (j === 4){
+            //     j = 0
+            // }
         }
     }
 
