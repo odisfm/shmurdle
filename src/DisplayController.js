@@ -153,10 +153,6 @@ export default class DisplayController {
         }
     }
 
-    updateGrid() {
-
-    }
-
     drawLetterDivs(totalLetters) {
         for (let i = 0; i < totalLetters; i++) {
             let letterDiv = document.createElement('div')
