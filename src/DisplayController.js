@@ -326,6 +326,13 @@ export default class DisplayController {
         for (let i = 0; i < gameController.word.length; i++) {
             gameOverLetters[i].textContent = gameController.word[i].toUpperCase()
         }
+        gameOverModal.classList.remove('win', 'lose')
+        if (winningGame) {
+            gameOverModal.classList.add('win')
+            document.querySelector('#game-over-streak').textContent = account.user.winStreak
+        }else{
+            gameOverModal.classList.add('lose')
+        }
         if (winningGame && account.user.animations){
             setTimeout(() => {
                 document.querySelector('body').classList.add('game-over');

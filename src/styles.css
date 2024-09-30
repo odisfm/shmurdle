@@ -271,14 +271,47 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     box-sizing: border-box;
     font-size: .8rem;
-    padding: 2rem;
+    padding: 1rem;
     gap: 1rem;
 
     span.game-over-text {
         font-size: 1rem;
+    }
+
+    #winning-screen, #losing-screen {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        height: 100%;
+        gap: 1rem;
+    }
+
+    &.lose {
+        #losing-screen {
+            display: flex;
+        }
+    }
+    &.win {
+        #winning-screen {
+            display: flex;
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            #game-over-streak {
+                color: var(--correct-green);
+                font-weight: 600;
+            }
+        }
     }
 
     #winning-word {
