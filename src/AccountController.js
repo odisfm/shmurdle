@@ -16,7 +16,6 @@ export default class AccountController {
             let winDistribution = [0, 0, 0, 0, 0, 0]
             let winStreak = 0
             let gameInProgress = false
-            this.assignNextWord(true)
 
             this.user = {
                 id: id,
