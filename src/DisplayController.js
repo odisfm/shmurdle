@@ -80,6 +80,11 @@ export default class DisplayController {
         })
         const forfeitGame = document.querySelector('#forfeit-game')
         forfeitGame.addEventListener('click', () => {
+            if (gameController.guessCount === 0){
+                this.printError('You haven\'t made a guess yet!')
+                document.querySelector('#overflow-menu').classList.add('hidden')
+                return
+            }
             if (window.confirm('Forfeit the current game?')){
                 this.gameOver()
                 account.registerDefeat('forfeit')
