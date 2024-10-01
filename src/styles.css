@@ -222,13 +222,6 @@ header {
             }
         }
     }
-
-    #testing-form {
-        position: absolute;
-        display: none;
-        margin-left: 700px;
-        margin-top: 1rem;
-    }
 }
 
 #virtual-keyboard {
