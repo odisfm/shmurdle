@@ -105,6 +105,11 @@ export default class DisplayController {
         this.selectNextRow()
         this.currentAttempt = ''
         this.initialiseKeyboard()
+        if (account.isWordOfDay()){
+            this.displayWordOfTheDayIcon(true)
+        }else{
+            this.displayWordOfTheDayIcon(false)
+        }
 
     }
 
@@ -403,6 +408,18 @@ export default class DisplayController {
         let messageSelection = victoryMessages[messageCategory]
         let random = Math.floor(Math.random() * (messageSelection.length - 1));
         return messageSelection[random]
+    }
+
+    displayWordOfTheDayIcon(state){
+        let icon = document.querySelector(`#wotd-identifier`)
+        if (state === true){
+            icon.classList.remove('hidden')
+            icon.addEventListener('click', () => {
+                this.printError('You\'re playing the word of the day!')
+            })
+        }else{
+            icon.classList.add('hidden')
+        }
     }
 }
 

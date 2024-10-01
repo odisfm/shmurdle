@@ -30,6 +30,8 @@ export default class AccountController {
                 winStreak: winStreak,
                 gameInProgress: gameInProgress
             }
+            this.assignNextWord(true)
+
         }else {
             this.user = JSON.parse(this.user)
             if (!this.user.lastPlayed === null) {
@@ -62,17 +64,17 @@ export default class AccountController {
         this.updateStoredUser()
     }
 
-    assignNextWord(firstTimePlayer = false) {
-        if (firstTimePlayer || !isToday(this.user.lastPlayed) || this.user.lastPlayed === null){
+    assignNextWord() {
+        if (this.isWordOfDay()){
             let dateToFormat;
-            if (firstTimePlayer || this.user.lastPlayed === null){
+            if (this.user.lastPlayed === null){
                 dateToFormat = new Date()
             }else{
                 dateToFormat = this.user.lastPlayed
             }
             let dateString = formatDate(dateToFormat, 'EEEE d MMMM yyyy')
             let hash = this.stringToNumber(dateString)
-            hash = hash % wordlist.length -1
+            hash = hash % wordlist.length
             this.nextWord = wordlist[hash]
         }else{
             let random = Math.floor(Math.random() * (wordlist.length - 1));
@@ -163,5 +165,12 @@ export default class AccountController {
             this.user.winStreak = 0
         }
         this.setGameInProgress(false)
+    }
+
+    isWordOfDay(){
+        if (!isToday(this.user.lastPlayed) || this.user.lastPlayed === null){
+            return true
+        }
+        return false
     }
 }

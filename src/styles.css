@@ -31,6 +31,32 @@ header {
     grid-template-areas: "left centre right";
     z-index: 1;
 
+    #wotd-identifier {
+        grid-area: left;
+        margin-right: .5rem;
+        margin-top: .2rem;
+        align-self: center;
+        justify-self: end;
+
+        &.hidden {
+            display: none;
+        }
+
+        button {
+            height: 12px;
+            width: 12px;
+            border: none;
+            border-radius: 50%;
+            padding: 0;
+            background-color: var(--correct-green);
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--appears-yellow);
+            }
+        }
+    }
+
     #logo-box {
         grid-area: centre;
         display: flex;
