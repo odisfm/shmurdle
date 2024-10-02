@@ -33,8 +33,8 @@ export default class AccountController {
 
         }else {
             this.user = JSON.parse(this.user)
-            if (!this.user.lastPlayed === null) {
-                this.user.lastPlayed = new Date(this.user.lastPlayed)
+            if (this.user.lastPlayed !== null) {
+                this.user.lastPlayed = new Date(this.user.lastPlayed);
             }
             this.assignNextWord()
             if (this.user.gameInProgress === true){
