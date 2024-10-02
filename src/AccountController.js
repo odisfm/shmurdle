@@ -75,9 +75,11 @@ export default class AccountController {
             let hash = this.stringToNumber(dateString)
             hash = hash % wordlist.length
             this.nextWord = wordlist[hash]
+            //console.log(`assigned word of the day: ${this.nextWord}`)
         }else{
             let random = Math.floor(Math.random() * (wordlist.length - 1));
             this.nextWord = wordlist[random]
+            //console.log(`assigned random word (${random + 1}): ${this.nextWord}`)
         }
     }
 
