@@ -65,12 +65,7 @@ export default class AccountController {
 
     assignNextWord() {
         if (this.isWordOfDay()){
-            let dateToFormat;
-            if (this.user.lastPlayed === null){
-                dateToFormat = new Date()
-            }else{
-                dateToFormat = this.user.lastPlayed
-            }
+            let dateToFormat = new Date();
             let dateString = formatDate(dateToFormat, 'EEEE d MMMM yyyy')
             let hash = this.stringToNumber(dateString)
             hash = hash % wordlist.length
@@ -169,7 +164,7 @@ export default class AccountController {
     }
 
     isWordOfDay(){
-        if (!isToday(this.user.lastPlayed) || this.user.lastPlayed === null){
+        if (this.user.lastPlayed === null || !isToday(this.user.lastPlayed)){
             return true
         }
         return false
