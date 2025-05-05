@@ -275,6 +275,9 @@ header {
             &.correct {
                 background-color: var(--correct-green);
             }
+            &:hover {
+                background-color: #616161;
+            }
         }
     }
 }
