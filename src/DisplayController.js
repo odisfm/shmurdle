@@ -64,9 +64,9 @@ export default class DisplayController {
             account.setAccurateWordlist(accurateListToggle.checked)
             document.querySelector('#overflow-menu').classList.add('hidden')
             if (accurateListToggle.checked === false){
-                this.printError('Schmurdle will let you guess real words that will never be the correct word')
+                this.printError('Shmurdle will let you guess real words that will never be the correct word')
             }else{
-                this.printError('Schmurdle will not allow real words that will never be the correct word')
+                this.printError('Shmurdle will not allow real words that will never be the correct word')
             }
         })
         if (account.user.accurateList) {
