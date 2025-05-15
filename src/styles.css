@@ -154,6 +154,11 @@ header {
                 }
             }
         }
+
+        #menu-github-link {
+            color: #979797;
+            cursor: pointer;
+        }
     }
 
     &.hidden {
