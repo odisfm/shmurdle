@@ -87,7 +87,7 @@ export default class GameController {
                 if (correctArray[i] === true){
                     continue
                 }
-                if (this.lastGuess[i] === true && this.hardMode === true){
+                if (this.lastGuess[i] === true && correctArray[i] === false){
                     return 'invalidHard'
                 }
         }
